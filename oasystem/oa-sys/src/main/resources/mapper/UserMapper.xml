@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace:改mapper.xml映射文件的唯一标识并且必须和数据处理层的接口的路径相同-->
+<mapper namespace="com.hdf.oasys.mapper.UserMapper">
+    <!--id的值必须和数据处理层的接口名一致-->
+    <!--此处的User-->
+    <select id="findAll" resultType="User">
+        select * from oa_user where id=#{id}
+    </select>
+    <select id="selectById" resultType="User">
+        select login_name,password,sex,role_id from oa_user where id=#{id}
+    </select>
+    <select id="findByLoginName" resultType="User">
+        select login_name,password from oa_user where login_name=#{loginName}
+    </select>
+    <insert id="insert" parameterType="User">
+        insert into oa_user(id,login_name,password,sex,role_id) values(#{id},#{loginName},#{password},#{sex},#{roleId})
+    </insert>
+    <update id="update" parameterType="User">
+#         暂未开放
+    </update>
+    <delete id="delete" parameterType="User">
+        # 暂未开放
+    </delete>
+</mapper>
+        <!--编写的Mapper对应的XML映射在yml中-->

@@ -1,0 +1,22 @@
+server:
+  port: 80
+# 配置MyBatis相关信息（数据库的连接设置）
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/oa_system?serverTimezone=UTC
+      username: root
+      password: root
+
+# private String login_name; 不符合Java变量命名规范解决
+# type-aliases-pk: 结果集映射
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.hdf.oasys.entity
+  #禁用掉模板缓冲，在开发环境中可以实时的观察到html页面的更改
+  spring:
+    thymeleaf:
+      cache: false
